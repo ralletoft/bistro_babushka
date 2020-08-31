@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bistro Babushka</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+
+
+
+        section {
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        article {
+            border: 1px solid #333;
+        }
+
+        img {
+            width: 100%;
+        }
+
+
+        p {
+            margin: 10px 0 0 10px;
+            font-family: sans-serif;
+        }
+
+        h2 {
+            margin: 10px 0 0 10px;
+            font-family: sans-serif;
+        }
+
+        button {
+            margin: 10px;
+            flex-basis: auto;
+            position: relative;
+            border: 3px solid darkgray;
+            font-size: 1.5em;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            font-size: 4em;
+            font-family: sans-serif;
+            color: darkgray;
+        }
+
+        .valgt {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Alle</h1>
+
+    <header>
+
+        <button class="filter valgt" data-kategori="alle">Alle</button>
+        <button class="filter" data-kategori="for">Forretter</button>
+        <button class="filter" data-kategori="hoved">hovedretter</button>
+        <button class="filter" data-kategori="dess">desserter</button>
+        <button class="filter" data-kategori="side">sideorders</button>
+        <button class="filter" data-kategori="drikke">drikkevarer</button>
+    </header>
+
+    <section id="list">
+
+    </section>
+
+    <template>
+        <article class="ret">
+            <h2></h2>
+            <h2 class="navn"></h2>
+            <img class="billede" src="" alt="">
+            <p class="pris">Pris: </p>
+            <p class="kort">Kort: </p>
+            <p class="lang">Lang: </p>
+            <p class="oprindelse">Oprindelse: </p>
+
+        </article>
+    </template>
+    <script>
+        let retter;
+        let filter = "alle";
+        document.addEventListener("DOMContentLoaded", loadJSON)
+
+        async function loadJSON() {
+            const JSONData = await
+            fetch("https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json");
+
+            retter = await JSONData.json();
+            addEventListenersToButtons();
+            visRetter();
+        }
+
+        function visRetter() {
+            const templatePointer = document.querySelector("template");
+            const listPointer = document.querySelector("#list");
+            listPointer.innerHTML = "";
+            console.log(retter);
+
+            retter.feed.entry.forEach(ret => {
+                if (filter == "alle" || filter == ret.gsx$kategori.$t) {
+                    const minKlon = templatePointer.cloneNode(true).content;
+                    minKlon.querySelector(".navn").textContent = ret.gsx$navn.$t;
+                    minKlon.querySelector(".pris").textContent = ret.gsx$pris.$t;
+                    minKlon.querySelector(".kort").textContent = ret.gsx$kort.$t;
+                    minKlon.querySelector(".lang").textContent = ret.gsx$lang.$t;
+                    minKlon.querySelector(".oprindelse").textContent = ret.gsx$oprindelse.$t;
+                    minKlon.querySelector(".billede").src = `imgs/small/${ret.gsx$billede.$t}` + "-sm.jpg";
+                    listPointer.appendChild(minKlon);
+                }
+
+            })
+        }
+
+        function addEventListenersToButtons() {
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.addEventListener("click", filterBTNs);
+            })
+        }
+
+        function filterBTNs() {
+            filter = this.dataset.kategori;
+            document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visRetter();
+
+        }
+    </script>
+</body></html>
