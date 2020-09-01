@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bistro Babushka</title>
+    <link rel="stylesheet" href="">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+
+
+
+        #list {
+            width: 90vw;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            margin-bottom: 5vw;
+        }
+
+        article {
+            border: 1px solid #333;
+        }
+
+        img {
+            width: 100%;
+        }
+
+
+        p {
+            margin: 10px 0 0 10px;
+            font-family: sans-serif;
+        }
+
+        h2 {
+            margin: 10px 0 0 10px;
+            font-family: sans-serif;
+        }
+
+        button {
+            margin: 10px;
+            flex-basis: auto;
+            position: relative;
+            border: 3px solid darkgray;
+            font-size: 1.5em;
+        }
+
+        button.hover {
+            background-color: aquamarine;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            font-size: 4em;
+            font-family: sans-serif;
+            color: darkgray;
+        }
+
+        .valgt {
+            background-color: red;
+        }
+
+        #splash {
+            background-image: url(imgs/large/baltiskbondesuppe.jpg);
+            background-size: cover;
+            background-position: center top;
+            width: 100%;
+            height: 50vw;
+        }
+
+        /*
+        #popup {
+            z-index: 1;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .8);
+            display: none;
+        }
+
+        #popup article {
+            width: 80vw;
+            height: 80vh;
+            margin: 4rem auto;
+            background-color: antiquewhite;
+        }
+
+        #luk {
+            position: fixed;
+            top: 0;
+            right: 1em;
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+            padding: .1em;
+        }
+*/
+
+        #detalje {
+            z-index: 1;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .8);
+        }
+
+        #detalje article {
+            width: 80vw;
+            height: 80vh;
+            margin: 4rem auto;
+            background-color: antiquewhite;
+        }
+
+        #detalje #luk {
+            position: fixed;
+            top: 0;
+            right: 1em;
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+            padding: .1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="detalje">
+        <article>
+            <button id="luk">tilbage</button>
+            <h2 class="det_navn"></h2>
+            <img class="det_billede" src="" alt="">
+            <p class="det_kategori"></p>
+            <p>Pris: <span class="det_pris"></span></p>
+            <p><span class="det_lang"></span></p>
+            <p>Oprindelse: <span class="det_oprindelse"></span></p>
+
+
+        </article>
+    </section>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+
+
+        let retter;
+
+
+        const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+        const detalje = document.querySelector("#detalje");
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", hentData);
+
+
+        async function hentData() {
+            const respons = await fetch(link);
+            retter = await respons.json();
+            vis();
+        }
+
+
+        function vis() {
+            retter.feed.entry.forEach(ret => {
+                if (id == ret.gsx$id.$t) {
+                    visDetaljer(ret)
+                }
+            })
+        }
+
+
+
+
+
+        //popup-funktionen
+
+
+        function visDetaljer(ret) {
+            detalje.style.display = "block";
+            detalje.querySelector(".det_navn").textContent = ret.gsx$navn.$t;
+            detalje.querySelector(".det_lang").textContent = ret.gsx$lang.$t;
+            detalje.querySelector(".det_oprindelse").textContent = ret.gsx$oprindelse.$t;
+            detalje.querySelector(".det_pris").textContent = ret.gsx$pris.$t;
+            detalje.querySelector(".det_billede").src = `imgs/large/${ret.gsx$billede.$t}.jpg`;
+
+
+        }
+        document.querySelector("#luk").addEventListener("click", () => history.back());
+    </script>
+</body></html>
