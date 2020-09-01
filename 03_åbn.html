@@ -133,9 +133,10 @@
             <h2 class="pop_navn"></h2>
             <img class="pop_billede" src="" alt="">
             <div>
+                <!--<p id="luk">X</p>-->
                 <p class="pop_kategori"></p>
                 <p>Pris: <span class="pop_pris"></span></p>
-                <!--                <p>Kort: <span class="pop_kort"></span></p>-->
+                <!--<p>Kort: <span class="pop_kort"></span></p>-->
                 <p><span class="pop_lang"></span></p>
                 <p>Oprindelse: <span class="pop_oprindelse"></span></p>
             </div>
@@ -158,7 +159,7 @@
             <p class="kategori"></p>
             <p>Pris: <span class="pris"></span></p>
             <p><span class="kort"></span></p>
-            <!--            <p>Lang: <span class="lang"></span></p>-->
+            <!--<p>Lang: <span class="lang"></span></p>-->
             <p>Oprindelse: <span class="oprindelse"></span></p>
 
 
@@ -190,7 +191,7 @@
                     minKlon.querySelector(".navn").textContent = ret.gsx$navn.$t;
                     minKlon.querySelector(".pris").textContent = ret.gsx$pris.$t;
                     minKlon.querySelector(".kort").textContent = ret.gsx$kort.$t;
-                    //                    minKlon.querySelector(".lang").textContent = ret.gsx$lang.$t;
+                    //minKlon.querySelector(".lang").textContent = ret.gsx$lang.$t;
                     minKlon.querySelector(".kategori").textContent = ret.gsx$kategori.$t;
                     minKlon.querySelector(".oprindelse").textContent = ret.gsx$oprindelse.$t;
                     minKlon.querySelector(".billede").src = `imgs/small/${ret.gsx$billede.$t}` + "-sm.jpg";
@@ -207,7 +208,7 @@
             popup.style.display = "block";
             popup.querySelector(".pop_navn").textContent = ret.gsx$navn.$t
             popup.querySelector(".pop_pris").textContent = ret.gsx$pris.$t;
-            //            popup.querySelector(".pop_kort").textContent = ret.gsx$kort.$t;
+            //popup.querySelector(".pop_kort").textContent = ret.gsx$kort.$t;
             popup.querySelector(".pop_lang").textContent = ret.gsx$lang.$t;
             popup.querySelector(".pop_kategori").textContent = ret.gsx$kategori.$t;
             popup.querySelector(".pop_oprindelse").textContent = ret.gsx$oprindelse.$t;
