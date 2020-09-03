@@ -37,7 +37,10 @@ function visRetter() {
 }
 
 function visDetaljer(ret) {
+    console.log(ret);
+
     popup.style.display = "block";
+
     popup.querySelector(".pop_navn").textContent = ret.gsx$navn.$t
     popup.querySelector(".pop_pris").textContent = ret.gsx$pris.$t;
     //popup.querySelector(".pop_kort").textContent = ret.gsx$kort.$t;
