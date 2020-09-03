@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    background-color: #f1f1f1;
 }
 
 main {
@@ -21,9 +22,16 @@ main {
 
 nav {}
 
-article {
-    box-shadow: 5px 5px 10px 5px #888888;
+#headliner {
 
+    /*    transform: translateY(-40px); */
+    /*    background-color: blue; */
+}
+
+article {}
+
+.ret {
+    box-shadow: 8px 8px 30px 0px rgba(0, 0, 0, 0.41);
 }
 
 img {
@@ -39,7 +47,7 @@ p {
 
 h2 {
     margin: 10px 0 10px 10px;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     text-transform: uppercase;
 
 }
@@ -50,8 +58,12 @@ button {
     padding: 6px;
     flex-basis: auto;
     position: relative;
-    /*    border: 3px solid darkgray;*/
     font-size: .8em;
+    border: none;
+}
+
+*:focus {
+    outline: 0 !important;
 }
 
 button.hover {
@@ -72,7 +84,7 @@ h1 {
 }
 
 .valgt {
-    background-color: beige;
+    text-decoration: underline;
 }
 
 #splash {
@@ -109,7 +121,7 @@ h1 {
     background-color: white;
     color: black;
     border-radius: 5px;
-    padding: .1em;
+    padding: 1em;
 }
 
 .pop_navn {
