@@ -3,7 +3,12 @@
     padding: 0px;
 }
 
-
+main {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
+    margin: 10px;
+}
 
 
 #list {
@@ -57,7 +62,7 @@ h1 {
     justify-content: center;
     font-size: 4em;
     font-family: sans-serif;
-    color: darkgray;
+    color: darkslategrey;
 }
 
 .valgt {

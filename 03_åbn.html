@@ -13,59 +13,62 @@
 <body>
     <div id="splash"></div>
 
-    <h1>Alle</h1>
+    <h1>ALLE</h1>
 
     <header>
 
         <nav>
-            <button class="filter valgt" data-kategori="alle">Alle</button>
-            <button class="filter" data-kategori="forretter">Forretter</button>
-            <button class="filter" data-kategori="hovedretter">hovedretter</button>
-            <button class="filter" data-kategori="desserter">desserter</button>
-            <button class="filter" data-kategori="sideorders">sideorders</button>
-            <button class="filter" data-kategori="drikkevarer">drikkevarer</button>
+            <button class="filter valgt" data-kategori="alle">ALLE</button>
+            <button class="filter" data-kategori="forretter">FORRETTER</button>
+            <button class="filter" data-kategori="hovedretter">HOVEDRETTER</button>
+            <button class="filter" data-kategori="desserter">DESSERTER</button>
+            <button class="filter" data-kategori="sideorders">SIDEORDERS</button>
+            <button class="filter" data-kategori="drikkevarer">DRIKKEVARER</button>
         </nav>
     </header>
 
-    <section id="popup">
-        <article>
-            <button id="luk">X</button>
-            <h2 class="pop_navn"></h2>
-            <img class="pop_billede" src="" alt="">
-            <div>
-                <!--<p id="luk">X</p>-->
-                <p class="pop_kategori"></p>
-                <p>Pris: <span class="pop_pris"></span></p>
-                <!--<p>Kort: <span class="pop_kort"></span></p>-->
-                <p><span class="pop_lang"></span></p>
-                <p>Oprindelse: <span class="pop_oprindelse"></span></p>
-            </div>
+    <main>
 
-        </article>
-    </section>
+        <section id="popup">
+            <article>
+                <button id="luk">X</button>
+                <h2 class="pop_navn"></h2>
+                <img class="pop_billede" src="" alt="">
+                <div>
+                    <!--<p id="luk">X</p>-->
+                    <p class="pop_kategori"></p>
+                    <p>Pris: <span class="pop_pris"></span></p>
+                    <!--<p>Kort: <span class="pop_kort"></span></p>-->
+                    <p><span class="pop_lang"></span></p>
+                    <p>Oprindelse: <span class="pop_oprindelse"></span></p>
+                </div>
 
-    <section id="list">
+            </article>
+        </section>
 
-    </section>
+        <section id="list">
 
-
-
-
-    <template>
-        <article class="ret">
-
-            <h2 class="navn"></h2>
-            <img class="billede" src="" alt="">
-            <p class="kategori"></p>
-            <p>Pris: <span class="pris"></span></p>
-            <p><span class="kort"></span></p>
-            <!--<p>Lang: <span class="lang"></span></p>-->
-            <p>Oprindelse: <span class="oprindelse"></span></p>
+        </section>
 
 
-        </article>
-    </template>
-    <script src="script_01.js">
 
-    </script>
+
+        <template>
+            <article class="ret">
+
+                <h2 class="navn"></h2>
+                <img class="billede" src="" alt="">
+                <p class="kategori"></p>
+                <p>Pris: <span class="pris"></span></p>
+                <p><span class="kort"></span></p>
+                <!--<p>Lang: <span class="lang"></span></p>-->
+                <p>Oprindelse: <span class="oprindelse"></span></p>
+
+
+            </article>
+        </template>
+
+    </main>
+
+    <script src="script_01.js"></script>
 </body></html>

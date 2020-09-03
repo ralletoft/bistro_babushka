@@ -3,7 +3,12 @@
     padding: 0px;
 }
 
-
+main {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px #888888;
+    margin: 10px;
+}
 
 
 #list {
@@ -22,6 +27,7 @@ article {
 
 img {
     width: 100%;
+    max-width: 780PX;
 }
 
 
@@ -57,7 +63,7 @@ h1 {
     justify-content: center;
     font-size: 4em;
     font-family: sans-serif;
-    color: darkgray;
+    color: darkslategrey;
 }
 
 .valgt {
@@ -70,6 +76,8 @@ h1 {
     background-position: center top;
     width: 100%;
     height: 50vw;
+    box-shadow: 5px 10px 8px #888888;
+    margin: 5px;
 }
 
 #popup {
@@ -81,6 +89,8 @@ h1 {
     height: 100vh;
     background-color: rgba(0, 0, 0, .8);
     display: none;
+    display: flex;
+    justify-content: center;
 }
 
 #popup article {
@@ -88,6 +98,7 @@ h1 {
     height: 80vh;
     margin: 4rem auto;
     background-color: antiquewhite;
+    padding: 10px;
 }
 
 #luk {
@@ -98,4 +109,13 @@ h1 {
     color: black;
     border-radius: 5px;
     padding: .1em;
+}
+
+.pop_navn {
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+.pop_kategori {
+    text-transform: capitalize;
 }
